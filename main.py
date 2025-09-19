@@ -1,5 +1,19 @@
 import random
-
+def choose_difficulty():
+    print('/n choose lvl')
+    print('1. easy(1-50')
+    print('2. medium (1-100')
+    print('3.hard (1-200')
+    while True:
+        choice = input('tvoi vibor(1-3):')
+        if choice == '1':
+            return 1,50
+        elif choice == '2':
+            return 1,100
+        elif choice == '3':
+            return 1,200
+        else:
+            print('chose 1,2,3')
 def show_history(attempts_history):
     print('/n history:')
     for i, (guess, result) in enumerate(attempts_history, 1):
