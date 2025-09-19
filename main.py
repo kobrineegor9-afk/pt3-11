@@ -21,21 +21,35 @@ def show_history(attempts_history):
 
 def main():
     print('добро пожалаловать в игру кгадай число!')
-    print('я загадал число от 1 до 100,попробуй угадать!')
 
-    secret_number = random.randint(1,100)
+    min_num,max_num = choose_difficulty()
+    secret_number = random.randint(min_num, max_num)
+    print(f'/n я загадал число от {min_num} до{max_num}   . попробуй угадать!')
+    print(' команды: "история" - показать попытки,"выход" - закончить игру')
+
     attempts = 0
     attempts_history = []
 
     while True:
-        guess = input('your opinion').lower()
-        attempts += 1
+        guess_input = input('/n tvoiya dogadka').lower()
 
-        if not guess.isdigit():
-            print("пожалуйсто введите число!")
+        if guess_input == 'exit':
+            print('goodbye')
+            break
+        elif guess_input == 'history':
+            show_history(attempts_history)
             continue
 
-        guess = int(guess)
+        if not guess_input.isdigit():
+            print('пожалйсто введите число')
+            continue
+
+
+
+
+
+        guess = int(guess_input)
+        attempts += 1
 
         if guess < secret_number:
             print('загадочное число больше!')
